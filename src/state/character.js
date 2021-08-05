@@ -11,7 +11,7 @@ export const useCharacters = () => {
   return characters;
 };
 
-export const UseCharacter = (id) => {
+export const useCharacter = (id) => {
   const [character, setCharacter] = useState({});
 
   useEffect(() => {

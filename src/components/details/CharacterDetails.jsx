@@ -1,22 +1,33 @@
+/* eslint-disable max-len */
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useCharacter } from '../../state/character';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const CharacterDetails = () => {
-  const { id } = useParams();
-  const character = useCharacter(id);
-
-  const name = JSON.stringify(character.name);
-  const status = JSON.stringify(character.status);
-  const image = JSON.stringify(character.image);
-
-  return (
-    <section>
-      <h2>{character.name}</h2>
+const CharacterDetail = ({ name, status, species, type, gender, origin, location, image }) => (
+  <figure>
+    <h2>{name}</h2>
+    <img src={image}/>
+    <figcaption>
       <p>Status: {status}</p>
-      <p>{character.image}</p>
-    </section>
-  );
+      <p>Species: {species}</p>
+      <p>Type: {type}</p>
+      <p>Gender: {gender}</p>
+      <p>Origin: {origin}</p>
+      <p>Location: {location}</p>
+    </figcaption>
+    <Link to="/">Return Home</Link>
+  </figure>
+);
+
+CharacterDetail.propTypes = {
+  name: PropTypes.string,
+  status: PropTypes.string,
+  species: PropTypes.string,
+  type: PropTypes.string,
+  gender: PropTypes.string,
+  origin: PropTypes.string,
+  location: PropTypes.string,
+  image: PropTypes.string,
 };
 
-export default CharacterDetails;
+export default CharacterDetail;

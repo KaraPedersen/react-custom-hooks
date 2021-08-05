@@ -1,18 +1,34 @@
 import React from 'react';
-import { 
+import {
   BrowserRouter as Router,
+  Route,
   Switch,
-  Route, } from 'react-router-dom';
-// import Header from './Header';
-import CharacterList from '../characters/CharacterList.jsx';
-import CharacterDetails from '../details/CharacterDetails.jsx';
+  Redirect
+} from 'react-router-dom';
+import CharacterDetails from '../details/CharacterDetails';
+import CharacterList from '../characters/CharacterList';
 
 
 export default function App() {
   return (
-    <Switch>
-      <Route exact path="/" component={CharacterList} />
-      <Route exact path="/:id" component={CharacterDetails} />
-    </Switch>
-  ); 
+    <div>
+      <Router>
+        <main>
+          <Switch>
+
+            <Route path="/" exact={true}
+              component={CharacterList} 
+            />
+
+            <Route path="/:id" exact={true}
+              component={CharacterDetails} 
+            />
+
+            <Redirect to="/" />
+            
+          </Switch>
+        </main>
+      </Router>
+    </div>
+  );
 }
