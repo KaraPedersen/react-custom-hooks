@@ -1,12 +1,15 @@
 import React from 'react';
-import { useCharacters } from '../../state/character.jsx';
-import Character from './Character.js';
+import { useCharacters } from '../../state/character';
+import Character from './Character';
+import { Link } from 'react-router-dom';
 
 const CharacterList = () => {
   const characters = useCharacters();
   const characterElements = characters.map((character) => (
     <li key={character.id}>
-      <Character {...character} />
+      <Link to={`/${character._id}`}>
+        <Character { ...character}></Character>
+      </Link>
     </li>
   ));
 
