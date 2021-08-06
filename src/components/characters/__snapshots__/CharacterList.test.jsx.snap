@@ -2,6 +2,19 @@
 
 exports[`CharacterList component renders CharacterList 1`] = `
 <DocumentFragment>
-  <ul />
+  <ul>
+    <a
+      href="/undefined"
+    >
+      <li>
+        <h2>
+          Pickle Rick
+        </h2>
+        <img
+          src="http://image.com"
+        />
+      </li>
+    </a>
+  </ul>
 </DocumentFragment>
 `;
