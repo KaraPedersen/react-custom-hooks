@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { useCharacters } from '../../state/character';
 import Character from './Character';
 import { Link } from 'react-router-dom';
 
 const CharacterList = ({ characters }) => (
   <ul>
-    {/* {characters.map((character, i) => ( */}
-    {/* <Link to={`/${character.id + i}`} key={character.id}>
+    {characters.map((character) => (
+      <Link to={`/${character.id }`} key={character.id}>
         <li>
           <Character 
             name={character.name}
@@ -14,7 +15,7 @@ const CharacterList = ({ characters }) => (
           />
         </li>
       </Link>
-    ))} */}
+    ))} 
   </ul>
 );
 
