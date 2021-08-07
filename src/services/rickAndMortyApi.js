@@ -1,21 +1,10 @@
-/* eslint-disable max-len */
-const randomArray = (length = 10, max = 671) => [...new Array(length)].map(() => Math.round(Math.random() * max));
+export function fetchCharacters(page) {
+  return fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
+    .then(characters => characters.json())
+    .then(({ results }) => results);
+}
 
-export const fetchCharacters = async () => {
-
-  const arr = randomArray();
-  const results = await Promise.all(arr.map(async characterId => {
-    const res = await fetchCharacter(characterId);
-    return res;
-  }));
-
-  return results;
-};
-
-export const fetchCharacter = async (id) => {
-  const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
-
-  const json = await res.json();
-  console.log(json);
-  return json;
-};
+export function fetchCharacter(id){
+  return fetch(`https://rickandmortyapi.com/api/character/${id}`)
+    .then(character => character.json());
+}

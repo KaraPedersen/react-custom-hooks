@@ -2,38 +2,8 @@
 
 exports[`CharacterDetail component renders CharacterDetail 1`] = `
 <DocumentFragment>
-  <figure>
-    <h2>
-      test
-    </h2>
-    <img
-      src="test"
-    />
-    <figcaption>
-      <p>
-        Status: test
-      </p>
-      <p>
-        Species: test
-      </p>
-      <p>
-        Type: test
-      </p>
-      <p>
-        Gender: test
-      </p>
-      <p>
-        Origin: test
-      </p>
-      <p>
-        Location: test
-      </p>
-    </figcaption>
-    <a
-      href="/"
-    >
-      Return Home
-    </a>
-  </figure>
+  <h1>
+    Loading...
+  </h1>
 </DocumentFragment>
 `;

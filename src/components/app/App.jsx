@@ -1,21 +1,19 @@
 import React from 'react';
-// import { Switch,  Route } from 'react-router-dom';
-import Header from './Header';
-// import CharacterDetails from '../details/CharacterDetails';
-// import CharacterList from '../characters/CharacterList';
+import CharacterList from '../characters/CharacterList';
+import CharacterDetails from '../details/CharacterDetails';
+import { Switch, Route } from 'react-router-dom';
+import Header from '../app/Header';
 
 
 export default function App() {
   return (
     <>
-      <Header />
-      <div>hello</div>
-      
-    </>
-  );
-}
-{/* <Header />
+      <Header/>
       <Switch>
-        <Route path="/" exact={true} component={CharacterList} />
-        <Route path="/:id" exact={true} component={Charact erDetails} />
-      </Switch> */}
+        <Route exact path="/" component={CharacterList} />
+        <Route exact path="/:id" component={CharacterDetails}/>
+      </Switch>
+    </>
+  ); 
+}
+

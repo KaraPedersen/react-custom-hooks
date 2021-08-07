@@ -1,33 +1,21 @@
-/* eslint-disable max-len */
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useCharacter } from '../../state/characters';
 
-const CharacterDetail = ({ name, status, species, type, gender, origin, location, image }) => (
-  <figure>
-    <h2>{name}</h2>
-    <img src={image}/>
-    <figcaption>
-      <p>Status: {status}</p>
-      <p>Species: {species}</p>
-      <p>Type: {type}</p>
-      <p>Gender: {gender}</p>
-      <p>Origin: {origin}</p>
-      <p>Location: {location}</p>
-    </figcaption>
-    <Link to="/">Return Home</Link>
-  </figure>
-);
+const CharacterDetails = () => {
+  const [character, loading] = useCharacter();
 
-CharacterDetail.propTypes = {
-  name: PropTypes.string,
-  status: PropTypes.string,
-  species: PropTypes.string,
-  type: PropTypes.string,
-  gender: PropTypes.string,
-  origin: PropTypes.string,
-  location: PropTypes.string,
-  image: PropTypes.string,
+  if(loading) return <h1>Loading...</h1>;
+  return ( 
+    <article>
+      <h2>{character.name}</h2>
+      <img src={character.image} alt={character.name}/>
+      <p>Status: {character.status}</p>
+      <p>Species: {character.species}</p>
+      <p>Origin: {character.origin.name}</p>
+      <p>Location: {character.location.name}</p>
+      <p>Type: {character.type ? character.type : 'No Type'}</p>
+    </article>
+  );
 };
 
-export default CharacterDetail;
+export default CharacterDetails;

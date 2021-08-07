@@ -1,41 +1,33 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-// import { useCharacters } from '../../state/character';
 import Character from './Character';
+import { useCharacters } from '../../state/characters';
 import { Link } from 'react-router-dom';
+import usePager from '../../state/pager';
+import Paging from '../paging/Paging';
+const CharacterList = () => {
+  const [page, handlePageClick] = usePager();
+  const [characters, loading] = useCharacters(page);
 
-const CharacterList = ({ characters }) => (
-  <ul>
-    {characters.map((character) => (
-      <Link to={`/${character.id }`} key={character.id}>
-        <li>
-          <Character 
-            name={character.name}
-            image={character.image}
-          />
-        </li>
-      </Link>
-    ))} 
-  </ul>
-);
+  const character = characters.map((character) => {
+    return (
+      <li key={character.id}>
+        <Link to={`/${character.id}`}>
+          <Character {...character} />      
+        </Link>
+      </li>
+    );
+  });
 
-CharacterList.propTypes = {
-  characters: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.int,
-      name: PropTypes.string,
-      status: PropTypes.string,
-      species: PropTypes.string,
-      type: PropTypes.string,
-      gender: PropTypes.string,
-      origin: PropTypes.object,
-      location: PropTypes.object,
-      image: PropTypes.string,
-      episode: PropTypes.arrayOf(
-        PropTypes.string
-      ),
-    })
-  ),
+  if(loading) return <h1>Loading...</h1>;
+  return (
+    <>  
+      <Paging page={page} 
+        characterLength={characters.length}
+        onClick={handlePageClick}/>
+      <ul>{character}</ul>
+    </>
+  );
+  
 };
 
 export default CharacterList;
